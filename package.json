@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "uiTests": "npx playwright test"
+    "regression": "npx playwright test",
+    "uiTests": "npx playwright test tests/UIBasicsTest.spec.js",
+    "webApp": "npx playwright test tests/WebAppClientTest.spec.js"
   },
   "keywords": [],
   "author": "",
