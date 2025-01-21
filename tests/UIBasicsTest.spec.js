@@ -25,7 +25,7 @@ test("Login Page Negative Test Case", async ({ page }) => {
     await login.enterInfo(dict);
 });
 
-test.only("Login Page Positive Test Case", async ({ page }) => {
+test("Login Page Positive Test Case", async ({ page }) => {
     const login = new LoginPage(page);
     const dict = {
         url: "https://rahulshettyacademy.com/loginpagePractise/",
