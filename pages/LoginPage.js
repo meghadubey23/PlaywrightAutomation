@@ -58,29 +58,29 @@ export class LoginPage {
         // await this.assertions.asserText("Incorrect username/password.", message);
 
         //Verify if error message is expected: Option2
-        if(params.errorMessage){
+        if (params.errorMessage) {
             await this.static.verifyErrorMessage();
         } else {
             await expect(this.page).toHaveTitle("ProtoCommerce");
             console.log('Home page has title: "ProtoCommerce"')
+
+            // Get the item texts --
+            const items = await this.static.getStaticElement(".card-body a");
+            let text = await items.first().textContent();
+            console.log(`firstItem: '${text}'`);
+
+            text = await items.nth(1).textContent();
+            console.log(`secondItem: '${text}'`);
+
+            text = await items.last().textContent();
+            console.log(`lastItem: '${text}'`);
+            // --
+
+            await this.page.waitForLoadState("networkidle");
+
+            // Get all the title of the items together
+            const allTitle = await items.allTextContents();
+            console.log(allTitle);
         }
-
-        // Get the item texts --
-        const items = await this.static.getStaticElement(".card-body a");
-        let text = await items.first().textContent();
-        console.log(`firstItem: '${text}'`);
-
-        text = await items.nth(1).textContent();
-        console.log(`secondItem: '${text}'`);
-
-        text = await items.last().textContent();
-        console.log(`lastItem: '${text}'`);
-        // --
-
-        await this.page.waitForLoadState("networkidle");
-
-        // Get all the title of the items together
-        const allTitle = await items.allTextContents();
-        console.log(allTitle);
     }
 }

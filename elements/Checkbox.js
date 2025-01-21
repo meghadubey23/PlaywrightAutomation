@@ -9,7 +9,7 @@ export class Checkbox extends BaseElements {
 
     async selectCheckbox(selector) {
         const checkbox = this.page.locator(selector); // No need to await here
-        await checkbox.check(); // Await the check() method
+        await checkbox.click(); // Await the check() method
     
         // Verify the checkbox is checked
         try {
